@@ -1,0 +1,63 @@
+/* Style the form container */
+.form-container {
+    margin: 20px;
+  }
+  
+  /* Style the form inputs */
+  .form-input {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the form labels */
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Style the form title */
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the form description */
+  .form-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the form fields */
+  .form-field {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the form field labels */
+  .form-field-label {
+    flex-basis: 30%;
+    font-weight: bold;
+  }
+  
+  /* Style the form field inputs */
+  .form-field-input {
+    flex-basis: 70%;
+  }
+  
+  /* Style the photo upload field */
+  .photo-upload {
+    margin-top: 20px;
+  }
+  
+  /* Style the submit button */
+  .submit-button {
+    margin-top: 20px;
+  }
+  
+  /* Style the form errors */
+  .form-error {
+    color: red;
+    margin-top: 5px;
+  }

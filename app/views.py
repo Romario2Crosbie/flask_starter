@@ -7,6 +7,7 @@ This file contains the routes for your application.
 
 from app import app
 from flask import render_template, request, redirect, url_for
+from .forms import PropertyForm
 
 
 ###
@@ -23,6 +24,17 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+
+
+@app.route('/New Property', methods=['GET', 'POST'])
+def NewProperty():
+    form = PropertyForm()
+    if form.validate_on_submit():
+        #stuff
+        return redirect(url_for('success'))
+    return render_template('NewProperty.html', form=form)
+
 
 
 ###
