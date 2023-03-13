@@ -1,6 +1,6 @@
 # flask_starter
 Starter code for a new Flask Application
-for the life of me I cannot get this database to connect so I had to create a database manually also when I flask db upgrade it deletes the database
+for the life of me I cannot get this database to connect so I had to create a database manually also when I flask db upgrade it deletes the database but the form does uploads to that database
 
 Remember to always create a virtual environment and install the packages in your requirements file
 
