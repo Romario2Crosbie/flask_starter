@@ -5,9 +5,14 @@ Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file contains the routes for your application.
 """
 
-from app import app
+from app import app, db
 from flask import render_template, request, redirect, url_for
 from .forms import PropertyForm
+from .models import Property
+from werkzeug.utils import secure_filename
+import os
+from flask import flash
+from app.models import Property
 
 
 ###
@@ -27,14 +32,35 @@ def about():
 
 
 
-@app.route('/New Property', methods=['GET', 'POST'])
+@app.route('/properties/create', methods=['GET', 'POST'])
 def NewProperty():
     form = PropertyForm()
     if form.validate_on_submit():
-        #stuff
-        return redirect(url_for('success'))
+        filename = None
+        if form.photo.data:
+            filename = secure_filename(form.photo.data.filename)
+            form.photo.data.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], filename))
+        property = Property(
+            title=form.title.data,
+            property_type=form.property_type.data,
+            num_bedrooms=form.num_bedrooms.data,
+            num_bathrooms=form.num_bathrooms.data,
+            location=form.location.data,
+            price=form.price.data,
+            description=form.description.data,
+            photo=filename
+        )
+        db.session.add(property)
+        db.session.commit()
+        flash('Property added successfully', 'success')
+        return redirect(url_for('home'))
     return render_template('NewProperty.html', form=form)
 
+@app.route('/properties')
+def properties():
+    all_properties = Property.query.all()
+    return render_template('Properties.html', properties=all_properties)
 
 
 ###

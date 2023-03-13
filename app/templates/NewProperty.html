@@ -2,36 +2,49 @@
 
 
 {% block main %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
-<form action="{{ url_for('NewProperty') }}" method="post" enctype="multipart/form-data">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required>
-  
-    <label for="bedrooms">Number of bedrooms:</label>
-    <input type="number" name="bedrooms" id="bedrooms" required>
-  
-    <label for="bathrooms">Number of bathrooms:</label>
-    <input type="number" name="bathrooms" id="bathrooms" required>
-  
-    <label for="location">Location:</label>
-    <input type="text" name="location" id="location" required>
-  
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price" required>
-  
-    <label for="type">Type:</label>
-    <select name="type" id="type">
-      <option value="house">House</option>
-      <option value="apartment">Apartment</option>
-    </select>
-  
-    <label for="description">Description:</label>
-    <textarea name="description" id="description" rows="5" required></textarea>
-  
-    <label for="photo">Photo:</label>
-    <input type="file" name="photo" id="photo" accept="image/*" required>
-  
-    <button type="submit">Submit</button>
+  <h1>New Property</h1>
+  <form method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <label for="title">Title:</label>
+      {{ form.title(class_="form-control") }}
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      {{ form.description(class_="form-control") }}
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="num_bedrooms">Number of Bedrooms:</label>
+          {{ form.num_bedrooms(class_="form-control") }}
+        </div>
+        <div class="col">
+          <label for="num_bathrooms">Number of Bathrooms:</label>
+          {{ form.num_bathrooms(class_="form-control") }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="property_type">Property Type:</label>
+          {{ form.property_type(class_="form-control") }}
+        </div>
+        <div class="col">
+          <label for="price">Price:</label>
+          {{ form.price(class_="form-control") }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      {{ form.location(class_="form-control") }}
+    </div>
+    <div class="photo-group form-group">
+      <label for="photo">Photo:</label>
+      {{ form.photo(class_="form-control-file") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Add Property</button>
   </form>
-
 {% endblock %}
